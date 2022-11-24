@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-task',
@@ -6,18 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent {
-  public complete:boolean ;
+  @Input() complete:boolean | undefined ;
+  @Input() title:string | undefined
+  @Output() count = new EventEmitter<number>()
   public modif:boolean;
-  public title:string;
 
   constructor() {
-    this.complete = false;
     this.modif = false;
-    this.title = "Bonjour";
   }
 
   // Set the Status on true | false
   toogleComplete() {
+    this.complete? this.count.emit(-1) : this.count.emit(1);
     this.complete = !this.complete
   }
 

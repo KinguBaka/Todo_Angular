@@ -1,5 +1,7 @@
 <ul>
-  <app-task></app-task>
-  <app-task></app-task>
-  <app-task></app-task>
+  <i class="bi bi-card-checklist"></i>
+  <h1>{{ count }}</h1>
+  <app-task [title]="title1" [complete]="complete1" (count)="setCount($event)"></app-task>
+  <app-task [title]="title2" [complete]="complete2" (count)="setCount($event)"></app-task>
+  <app-task [title]="title3" [complete]="complete3" (count)="setCount($event)"></app-task>
 </ul>
