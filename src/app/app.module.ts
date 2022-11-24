@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TaskComponent } from './components/task/task.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,6 @@ import { MatCardModule } from '@angular/material/card';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

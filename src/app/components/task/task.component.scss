@@ -1,3 +1,18 @@
-li {
+.card {
+
+  &.finish {
+    background-color: #fccf90;
+  }
+  &.notFinish {
+    background-color: #90c3fc;
+  }
+  min-height: 100px;
   margin: 50px;
+
+  .btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
 }
+
