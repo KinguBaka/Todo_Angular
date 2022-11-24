@@ -23,7 +23,7 @@ export class TaskComponent {
   }
 
   getButtonText() {
-    return this.complete ? "Terminer" : "Annuler"
+    return this.complete ? "Cacher" : "Voir"
   }
 
   getComplete():string | void {
@@ -34,9 +34,9 @@ export class TaskComponent {
 
   getBadgeVariant():string {
     if (this.complete) {
-      this.spanStyle = 'd-inline float-right badge badge-success'
+      this.spanStyle = 'd-inline float-right'
     } else {
-      this.spanStyle = 'd-inline float-right badge badge-warning'
+      this.spanStyle = ''
     }
     return this.spanStyle;
   }
@@ -51,7 +51,7 @@ export class TaskComponent {
   }
 
   classBtn():string {
-    return this.complete ? "btn btn-outline-success" : "btn btn-outline-warning"
+    return this.complete ? "btn btn-outline-success float-end" : "btn btn-outline-warning float-end"
   }
 
 }
