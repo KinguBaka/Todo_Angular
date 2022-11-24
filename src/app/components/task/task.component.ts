@@ -28,7 +28,7 @@ export class TaskComponent {
 
   getComplete():string | void {
     if (this.complete) {
-      return this.name;
+      return this.name + ", how are you ?";
     }
   }
 

@@ -1,2 +1,6 @@
-
-<li [class]="getItemVariant()">Bonjour <span [class]="getBadgeVariant()">{{ getComplete() }}</span> <button [class]="classBtn()" (click)="toogleComplete()">{{getButtonText()}}</button> </li>
+<li [class]="getItemVariant()">
+  Bonjour <span [class]="getBadgeVariant()">{{ getComplete() }} </span>
+  <button [class]="classBtn()" (click)="toogleComplete()">
+    {{getButtonText()}}
+  </button>
+</li>
