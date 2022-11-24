@@ -7,9 +7,13 @@ import { Component } from '@angular/core';
 })
 export class TaskComponent {
   public complete:boolean ;
+  public modif:boolean;
+  public title:string;
 
   constructor() {
     this.complete = false;
+    this.modif = false;
+    this.title = "Bonjour";
   }
 
   // Set the Status on true | false
@@ -40,5 +44,10 @@ export class TaskComponent {
   // Change class Card (scss)
   classCard():string {
     return this.complete ? "finish" : "notFinish"
+  }
+
+  // Set the status of modif
+  setModif() {
+    this.modif = !this.modif;
   }
 }

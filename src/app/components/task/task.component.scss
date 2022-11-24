@@ -9,10 +9,14 @@
   min-height: 100px;
   margin: 50px;
 
-  .btn {
+  .btns {
     position: absolute;
     bottom: 10px;
     right: 10px;
+
+    .btn {
+      margin: 5px;
+    }
   }
 }
 

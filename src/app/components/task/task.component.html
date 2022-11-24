@@ -1,11 +1,17 @@
 <li class="card" [class]="classCard()">
   <div class="card-body">
-    <h1 class="card-title">Bonjour</h1>
+    <h1 class="card-title">{{ title }}</h1>
     <div class="card-text">
       Je dois faire ça et tout!
-      <button [class]="classBtn()" (click)="toogleComplete()">
-        {{getButtonText()}}
-      </button>
+      <div class="input">
+        <input type="text"  [(ngModel)]="title" >
+      </div>
+      <div class="btns">
+        <button type="button" class="btn btn-outline-secondary" (click)="setModif()" >Modifier</button>
+        <button [class]="classBtn()" (click)="toogleComplete()">
+          {{getButtonText()}}
+        </button>
+      </div>
     </div>
   </div>
   <span [class]="setBadgeClass()" class="position-absolute top-0 start-100 translate-middle badge rounded-pill"> {{ setBadge() }} </span>
