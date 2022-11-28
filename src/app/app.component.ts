@@ -9,9 +9,11 @@ import { Task } from './class/task.model';
 export class AppComponent {
   public count:number;
   listTask: Task[];
+  percentage:number;
 
   constructor() {
     this.count = 0;
+    this.percentage = 0
 
     this.listTask = [
       new Task(1, "Course", true, "Acheter du blanc de Poulet" ),
@@ -22,6 +24,7 @@ export class AppComponent {
 
   setCount(nbr:number) {
     this.count += nbr;
+    this.percentage = this.count/this.listTask.length*100;
   }
 
   trackByFunction(index: number, item: any): string {
@@ -34,5 +37,6 @@ export class AppComponent {
         this.count += 1;
       }
     }
+    this.percentage = this.count/this.listTask.length*100;
   }
 }
