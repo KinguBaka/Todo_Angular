@@ -1,6 +1,6 @@
 <li class="card" [class]="classCard()">
   <div class="card-body">
-    <h1 class="card-title">{{ task.title }}</h1>
+    <h1 class="card-title">{{ task.title }} -- {{ task.created | date:'d/M/yy, h:mm'}}</h1>
     <div class="card-text">
       {{ task.description }}
       <div class="input">
