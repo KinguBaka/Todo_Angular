@@ -1,7 +1,4 @@
 <ul>
-  <i class="bi bi-card-checklist"></i>
-  <h1>{{ count }}</h1>
-  <app-task [title]="title1" [complete]="complete1" (count)="setCount($event)"></app-task>
-  <app-task [title]="title2" [complete]="complete2" (count)="setCount($event)"></app-task>
-  <app-task [title]="title3" [complete]="complete3" (count)="setCount($event)"></app-task>
+  <h1>{{count}}</h1>
+  <app-task *ngFor="let task of listTask; trackBy:trackByFunction" [title]="task.title" [complete]="task.completed" [description]="task.description" (count)="setCount($event)"></app-task>
 </ul>

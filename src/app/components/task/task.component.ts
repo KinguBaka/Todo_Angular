@@ -6,6 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent {
+  @Input() description:string | undefined;
   @Input() complete:boolean | undefined ;
   @Input() title:string | undefined
   @Output() count = new EventEmitter<number>()
@@ -50,4 +51,5 @@ export class TaskComponent {
   setModif() {
     this.modif = !this.modif;
   }
+
 }

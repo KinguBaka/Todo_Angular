@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Task } from './class/task.model';
 
 @Component({
   selector: 'app-root',
@@ -7,28 +8,28 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public count:number;
-
-  public title1:string;
-  public title2:string;
-  public title3:string;
-
-  public complete1:boolean;
-  public complete2:boolean;
-  public complete3:boolean;
+  task1:object;
+  task2:object;
+  task3:object;
+  listTask:Array<any>;
 
   constructor() {
     this.count = 1;
 
-    this.title1 = "Faire les courses";
-    this.title2 = "Dormir";
-    this.title3 = "Nourrir le chat";
+    this.task1 = new Task(1, "Course", true, "Acheter du blanc de Poulet" );
+    this.task2 = new Task(2, "Chat", false, "Nourrir le chat!" );
+    this.task3 = new Task(3, "Dormir", false, "Faire une nuit de 10h" );
 
-    this.complete1 = true;
-    this.complete2 = false;
-    this.complete3 = false;
+    this.listTask = [
+      this.task1, this.task2, this.task3
+    ]
   }
 
   setCount(nbr:number) {
     this.count += nbr;
+  }
+
+  trackByFunction(index: number, item: any): string {
+    return item.id;
   }
 }
