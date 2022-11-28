@@ -1,5 +1,15 @@
-<ul>
+<ul *ngIf="listTask.length > 0; else noTask">
   <h1>{{count}}</h1>
+  <div [ngSwitch]="true">
+    <h2 *ngSwitchCase="count/listTask.length*100 == 0"> 0% de fait </h2>
+    <h2 *ngSwitchCase="count/listTask.length*100 > 1 &&count/listTask.length*100 < 50"> Premiére moitié de faite ! </h2>
+    <h2 *ngSwitchCase="count/listTask.length*100 > 51 && count/listTask.length*100 < 99"> Bientot fini ! </h2>
+    <h2 *ngSwitchCase="count/listTask.length*100 == 100"> Fini !  </h2>
+  </div>
   <app-task *ngFor="let task of listTask; trackBy:trackByFunction"
   [task]="task" (count)="setCount($event)" ></app-task>
 </ul>
+
+<ng-template #noTask>
+  <h1>Aucune tâches pour le moment ! </h1>
+</ng-template>
