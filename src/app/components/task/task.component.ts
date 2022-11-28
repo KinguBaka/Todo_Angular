@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Task } from 'src/app/class/task.model';
 
 @Component({
   selector: 'app-task',
@@ -7,7 +6,7 @@ import { Task } from 'src/app/class/task.model';
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent {
-  @Input() task!: Task;
+  @Input() task!: any;
   @Output() count = new EventEmitter<number>();
   public modif:boolean;
 

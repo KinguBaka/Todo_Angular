@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Task } from './class/task.model';
+import { TodolistService } from './services/todolist.service';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +8,14 @@ import { Task } from './class/task.model';
 })
 export class AppComponent {
   public count:number;
-  listTask: Task[];
+  listTask: any[];
   percentage:number;
 
-  constructor() {
+  constructor(private todoListService: TodolistService) {
     this.count = 0;
     this.percentage = 0
+    this.listTask = todoListService.listOfTask
 
-    this.listTask = [
-      new Task(1, "Course", true, "Acheter du blanc de Poulet" ),
-      new Task(2, "Chat", false, "Nourrir le chat!" ),
-      new Task(3, "Dormir", false, "Faire une nuit de 10h" )
-    ]
   }
 
   setCount(nbr:number) {
