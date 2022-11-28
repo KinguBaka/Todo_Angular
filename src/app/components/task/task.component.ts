@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Task } from 'src/app/class/task.model';
 
 @Component({
   selector: 'app-task',
@@ -6,10 +7,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./task.component.scss']
 })
 export class TaskComponent {
-  @Input() description:string | undefined;
-  @Input() complete:boolean | undefined ;
-  @Input() title:string | undefined
-  @Output() count = new EventEmitter<number>()
+  @Input() task!: Task;
+  @Output() count = new EventEmitter<number>();
   public modif:boolean;
 
   constructor() {
@@ -18,33 +17,33 @@ export class TaskComponent {
 
   // Set the Status on true | false
   toogleComplete() {
-    this.complete? this.count.emit(-1) : this.count.emit(1);
-    this.complete = !this.complete
+    this.task.completed? this.count.emit(-1) : this.count.emit(1);
+    this.task.completed = !this.task.completed
   }
 
   // Change value of Btn
   getButtonText():string {
-    return this.complete ? "Annuler" : "Fait"
+    return this.task.completed ? "Annuler" : "Fait"
   }
 
   // Change color Btn
   classBtn():string {
-    return this.complete ? "btn btn-danger" : "btn btn-success"
+    return this.task.completed ? "btn btn-danger" : "btn btn-success"
   }
 
   // Change color badge
   setBadgeClass():string {
-    return this.complete ? "bg-success" : "bg-danger"
+    return this.task.completed ? "bg-success" : "bg-danger"
   }
 
   // Change value of badge
   setBadge():string {
-    return this.complete ? "Fait" : "A faire"
+    return this.task.completed ? "Fait" : "A faire"
   }
 
   // Change class Card (scss)
   classCard():string {
-    return this.complete ? "finish" : "notFinish"
+    return this.task.completed ? "finish" : "notFinish"
   }
 
   // Set the status of modif

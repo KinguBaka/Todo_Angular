@@ -1,4 +1,5 @@
 <ul>
   <h1>{{count}}</h1>
-  <app-task *ngFor="let task of listTask; trackBy:trackByFunction" [title]="task.title" [complete]="task.completed" [description]="task.description" (count)="setCount($event)"></app-task>
+  <app-task *ngFor="let task of listTask; trackBy:trackByFunction"
+  [task]="task" (count)="setCount($event)" ></app-task>
 </ul>

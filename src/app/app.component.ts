@@ -8,20 +8,15 @@ import { Task } from './class/task.model';
 })
 export class AppComponent {
   public count:number;
-  task1:object;
-  task2:object;
-  task3:object;
-  listTask:Array<any>;
+  listTask: Task[];
 
   constructor() {
-    this.count = 1;
-
-    this.task1 = new Task(1, "Course", true, "Acheter du blanc de Poulet" );
-    this.task2 = new Task(2, "Chat", false, "Nourrir le chat!" );
-    this.task3 = new Task(3, "Dormir", false, "Faire une nuit de 10h" );
+    this.count = 0;
 
     this.listTask = [
-      this.task1, this.task2, this.task3
+      new Task(1, "Course", true, "Acheter du blanc de Poulet" ),
+      new Task(2, "Chat", false, "Nourrir le chat!" ),
+      new Task(3, "Dormir", false, "Faire une nuit de 10h" )
     ]
   }
 
@@ -31,5 +26,13 @@ export class AppComponent {
 
   trackByFunction(index: number, item: any): string {
     return item.id;
+  }
+
+  ngOnInit() {
+    for (let task of this.listTask) {
+      if (task.completed == true) {
+        this.count += 1;
+      }
+    }
   }
 }
