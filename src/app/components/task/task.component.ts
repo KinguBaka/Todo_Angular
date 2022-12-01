@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TodolistService } from 'src/app/services/todolist.service';
+
 
 @Component({
   selector: 'app-task',
@@ -10,14 +12,14 @@ export class TaskComponent {
   @Output() count = new EventEmitter<number>();
   public modif:boolean;
 
-  constructor() {
+  constructor(public todolistservice : TodolistService) {
     this.modif = false;
+
   }
 
   // Set the Status on true | false
   toogleComplete() {
-    this.task.completed? this.count.emit(-1) : this.count.emit(1);
-    this.task.completed = !this.task.completed
+    this.todolistservice.toogleComplete(this.task.id)
   }
 
   // Change value of Btn
