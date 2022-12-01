@@ -6,12 +6,20 @@ import { AppComponent } from './app.component';
 import { TaskComponent } from './components/task/task.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { TodolistComponent } from './components/todolist/todolist.component';
+import { NavComponent } from './components/nav/nav.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TaskComponent
+    TaskComponent,
+    TodolistComponent,
+    NavComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
