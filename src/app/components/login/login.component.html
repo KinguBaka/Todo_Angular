@@ -1,1 +1,1 @@
-<button class="btn btn-primary" (click)="authService.login()">Se connecter</button>
+<button *ngIf="!authService.isAuth" class="btn btn-primary" (click)="authService.login()">Se connecter</button>

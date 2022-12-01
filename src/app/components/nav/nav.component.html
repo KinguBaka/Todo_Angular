@@ -1,7 +1,9 @@
+<div class="nav">
+  <ul>
+    <li routerLinkActive=active><a routerLink="todolist">Todolist</a> </li>
+    <li routerLinkActive=active><a routerLink="login">Authentification</a> </li>
+  </ul>
 
-<div *ngIf="!authService.isAuth; else logOut" class="login">
   <app-login></app-login>
-</div>
-<ng-template #logOut>
   <app-logout></app-logout>
-</ng-template>
+</div>

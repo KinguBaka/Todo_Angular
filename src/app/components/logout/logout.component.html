@@ -1,1 +1,1 @@
-<button class="btn btn-danger" (click)="authService.logout()">Deconnexion</button>
+<button *ngIf="authService.isAuth" class="btn btn-danger" (click)="authService.logout()">Deconnexion</button>
