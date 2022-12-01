@@ -9,7 +9,6 @@ import { TodolistService } from 'src/app/services/todolist.service';
 })
 export class TaskComponent {
   @Input() task!: any;
-  @Output() count = new EventEmitter<number>();
   public modif:boolean;
 
   constructor(public todolistservice : TodolistService) {

@@ -4,9 +4,10 @@ export class Task {
   completed:boolean;
   description:string
   created:string;
+  private static index: number = 0;
 
-  constructor(id:number, title:string, completed:boolean, description:string) {
-    this.id = id;
+  constructor( title:string, completed:boolean, description:string) {
+    this.id = Task.index++;
     this.title = title;
     this.completed = completed;
     this.description = description;
