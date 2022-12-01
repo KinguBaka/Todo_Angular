@@ -1,1 +1,7 @@
-<p>nav works!</p>
+
+<div *ngIf="!authService.isAuth; else logOut" class="login">
+  <app-login></app-login>
+</div>
+<ng-template #logOut>
+  <app-logout></app-logout>
+</ng-template>
