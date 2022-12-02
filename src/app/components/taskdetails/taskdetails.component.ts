@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TodolistService } from 'src/app/services/todolist.service';
+import { TaskComponent } from '../task/task.component';
 
 @Component({
   selector: 'app-taskdetails',
@@ -8,7 +11,12 @@ import { Component } from '@angular/core';
 export class TaskdetailsComponent {
   taskDetails:Array<any>;
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private task: TodolistService) {
     this.taskDetails = [];
+  }
+
+  ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.taskDetails.push(this.task.getTaskById(id));
   }
 }

@@ -45,4 +45,10 @@ export class TodolistService {
     let percentage:number = this.setCount/this.listOfTask.length*100;
     return percentage;
   }
+
+  getTaskById(taskId:any):Task {
+    return this.listOfTask[taskId];
+  }
+
+
 }

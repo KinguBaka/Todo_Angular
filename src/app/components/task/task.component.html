@@ -1,18 +1,20 @@
 <li class="card" [class]="classCard()">
-  <div class="card-body">
-    <h1 class="card-title">{{ task.title }} -- {{ task.created | date:'d/M/yy, h:mm'}}</h1>
-    <div class="card-text">
-      {{ task.description }}
-      <div class="input">
-        <input type="text"  [(ngModel)]="task.title" >
-      </div>
-      <div class="btns">
-        <button type="button" class="btn btn-outline-secondary" (click)="setModif()" >Modifier</button>
-        <button [class]="classBtn()" (click)="toogleComplete()">
-          {{getButtonText()}}
-        </button>
+  <a [routerLink]="['/todolist', task.id]">
+    <div class="card-body">
+      <h1 class="card-title">{{ task.title }} -- {{ task.created | date:'d/M/yy, h:mm'}}</h1>
+      <div class="card-text">
+        {{ task.description }}
+        <div class="input">
+          <input type="text"  [(ngModel)]="task.title" >
+        </div>
+        <div class="btns">
+          <button type="button" class="btn btn-outline-secondary" (click)="setModif()" >Modifier</button>
+          <button [class]="classBtn()" (click)="toogleComplete()">
+            {{getButtonText()}}
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <span [class]="setBadgeClass()" class="position-absolute top-0 start-100 translate-middle badge rounded-pill"> {{ setBadge() }} </span>
+    <span [class]="setBadgeClass()" class="position-absolute top-0 start-100 translate-middle badge rounded-pill"> {{ setBadge() }} </span>
+  </a>
 </li>
