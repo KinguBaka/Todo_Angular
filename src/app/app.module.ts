@@ -10,6 +10,7 @@ import { TodolistComponent } from './components/todolist/todolist.component';
 import { NavComponent } from './components/nav/nav.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { TaskdetailsComponent } from './components/taskdetails/taskdetails.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     TodolistComponent,
     NavComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    TaskdetailsComponent
   ],
   imports: [
     BrowserModule,
