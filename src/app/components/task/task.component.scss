@@ -1,6 +1,10 @@
 
 .card {
 
+  h1 {
+    cursor: pointer;
+  }
+
   &.finish {
     background-color: #fccf90;
   }

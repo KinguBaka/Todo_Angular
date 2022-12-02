@@ -1,7 +1,6 @@
 <li class="card" [class]="classCard()">
-  <a [routerLink]="['/todolist', task.id]">
     <div class="card-body">
-      <h1 class="card-title">{{ task.title }} -- {{ task.created | date:'d/M/yy, h:mm'}}</h1>
+      <h1 [routerLink]="['/todolist', task.id]" class="card-title">{{ task.title }} -- {{ task.created | date:'d/M/yy, h:mm'}}</h1>
       <div class="card-text">
         {{ task.description }}
         <div class="input">
@@ -16,5 +15,4 @@
       </div>
     </div>
     <span [class]="setBadgeClass()" class="position-absolute top-0 start-100 translate-middle badge rounded-pill"> {{ setBadge() }} </span>
-  </a>
 </li>
