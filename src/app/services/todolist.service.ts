@@ -46,8 +46,8 @@ export class TodolistService {
     return percentage;
   }
 
-  getTaskById(taskId:any):Task {
-    return this.listOfTask[taskId];
+  getTaskById(taskId:any):Task[] {
+    return this.listOfTask.filter(task => task.id == taskId)
   }
 
 
