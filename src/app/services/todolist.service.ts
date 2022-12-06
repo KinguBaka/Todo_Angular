@@ -1,34 +1,38 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Task } from '../class/task.model';
 
-const initialList = [
+const initialList: Task[] = [
   new Task("Course", true, "Acheter du blanc de Poulet" ),
   new Task("Chat", false, "Nourrir le chat!" ),
   new Task("Dormir", false, "Faire une nuit de 10h" )
 ]
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class TodolistService {
-  public listOfTask: Task[];
+  private listOfTask: Task[];
+  private _task = new BehaviorSubject<Task[]>([]);
+  readonly task$ = this._task.asObservable();
+  public prom!:Promise<string>;
 
   constructor() {
     this.listOfTask = [];
-    this.updateList(initialList);
-  }
-
-  async updateList(list:Task[]):Promise<void> {
-    this.listOfTask = await new Promise<Task[]> (() => {
+    this.prom = new Promise<string>((resolve) => {
       setTimeout(() => {
-        this.listOfTask = list
+        this.listOfTask = initialList;
+        this.emiter(this.listOfTask);
+        resolve('fini')
       }, 1000)
     })
   }
 
   toogleComplete(index:number) {
-    this.listOfTask[index].completed = !this.listOfTask[index].completed
+    this.listOfTask[index].completed = !this.listOfTask[index].completed;
+    this.emiter(this.listOfTask)
   }
 
   get setCount(): number {
@@ -50,5 +54,12 @@ export class TodolistService {
     return this.listOfTask.filter(task => task.id == taskId)
   }
 
+  getTask():Observable<Task[]> {
+    return this.task$;
+  }
+
+  private emiter(task: Task[] = this.listOfTask):void {
+    this._task.next(Object.assign([], task))
+  }
 
 }

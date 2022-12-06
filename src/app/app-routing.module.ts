@@ -4,14 +4,21 @@ import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TaskdetailsComponent } from './components/taskdetails/taskdetails.component';
 import { TodolistComponent } from './components/todolist/todolist.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'todolist/:id', component: TaskdetailsComponent },
-  { path: 'todolist', component: TodolistComponent },
-  { path: '', component: TodolistComponent },
-  { path: 'login', component: LoginComponent },
-  { path: '404', component: NotFoundComponent },
-  { path: '**', redirectTo : "/404"},
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    children: [
+      {path: '', component: TodolistComponent, pathMatch: 'full'},
+      {path: 'todolist', component: TodolistComponent, pathMatch: 'full'},
+      {path: 'todolist/:id', component: TaskdetailsComponent},
+    ]
+  },
+  {path: 'login', component: LoginComponent},
+  {path: '404', component: NotFoundComponent},
+  {path: '**', redirectTo: '404'}
 ];
 
 @NgModule({
