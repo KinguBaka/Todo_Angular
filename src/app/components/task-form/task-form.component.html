@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+  <label class="form-label" for="title">Titre : </label>
+  <input class="form-control" type="text" name="title" ngModel required> <br>
+  <label class="form-label" for="description">Description : </label>
+  <textarea class="form-control" name="description" id="description" cols="20" rows="10" ngModel required></textarea> <br>
+  <label class="form-label" for="complete">Complete : </label>
+  <select class="form-select" name="completed" id="complete-select" ngModel required>
+    <option [value]="true">complete</option>
+    <option [value]="false">uncomplete</option>
+  </select>
+  <button class="btn btn-outline-primary" type="submit" [disabled]="!taskForm.valid">Valider</button>
+</form>

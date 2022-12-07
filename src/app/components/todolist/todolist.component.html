@@ -1,10 +1,12 @@
 <ul *ngIf="listOfTask.length > 0; else noTask">
-  <h1>{{todoListService.setCount}}</h1>
-  <div [ngSwitch]="true">
-    <h2 *ngSwitchCase="todoListService.setPercentage == 0"> 0% de fait </h2>
-    <h2 *ngSwitchCase="todoListService.setPercentage > 0 && todoListService.setPercentage < 50"> Premiére moitié de faite ! </h2>
-    <h2 *ngSwitchCase="todoListService.setPercentage > 51 && todoListService.setPercentage < 100"> Bientot fini ! </h2>
-    <h2 *ngSwitchCase="todoListService.setPercentage == 100"> Fini !  </h2>
+  <div class="stats">
+    <h1>{{todoListService.setCount}}</h1>
+    <div [ngSwitch]="true">
+      <h2 *ngSwitchCase="todoListService.setPercentage == 0"> 0% de fait </h2>
+      <h2 *ngSwitchCase="todoListService.setPercentage > 0 && todoListService.setPercentage < 50"> Premiére moitié de faite ! </h2>
+      <h2 *ngSwitchCase="todoListService.setPercentage > 51 && todoListService.setPercentage < 100"> Bientot fini ! </h2>
+      <h2 *ngSwitchCase="todoListService.setPercentage == 100"> Fini !  </h2>
+    </div>
   </div>
   <app-task *ngFor="let task of listOfTask; trackBy:trackByFunction"
   [task]="task" ></app-task>

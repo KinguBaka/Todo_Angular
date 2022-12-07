@@ -62,4 +62,12 @@ export class TodolistService {
     this._task.next(Object.assign([], task))
   }
 
+  addTask(task: any): void {
+    let newTask = new Task(task.title, task.completed, task.description);
+    console.log(newTask);
+    console.log(task);
+    this.listOfTask.push(newTask);
+    this.emiter(this.listOfTask);
+  }
+
 }
