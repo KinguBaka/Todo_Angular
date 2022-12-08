@@ -15,23 +15,19 @@ export class UserFormComponent {
   lastName: FormControl;
   email: FormControl;
   team: FormControl;
-  skills: FormControl;
   constructor(private fb: FormBuilder, public userService: UserService, public router: Router) {
 
     this.firstName = this.fb.control('', [Validators.required]);
     this.lastName = this.fb.control('', [Validators.required]);
     this.email = this.fb.control('', [Validators.required, Validators.email]);
-    this.team = this.fb.control('', [Validators.requiredTrue]);
-    this.skills = this.fb.control('', []);
+    this.team = this.fb.control('', [Validators.required]);
 
     this.userForm = this.fb.group({
       firstName: this.firstName,
       lastName: this.lastName,
       email: this.email,
-      team: this.team,
-      skills: this.skills
+      team: this.team
     });
-
   }
 
   onSubmit() {
