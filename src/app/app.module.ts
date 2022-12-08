@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { TaskComponent } from './components/task/task.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { TodolistComponent } from './components/todolist/todolist.component';
 import { NavComponent } from './components/nav/nav.component';
 import { LoginComponent } from './components/login/login.component';
@@ -32,7 +33,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
