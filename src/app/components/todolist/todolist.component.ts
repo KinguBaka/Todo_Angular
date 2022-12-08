@@ -13,7 +13,7 @@ export class TodolistComponent implements OnInit, OnDestroy {
   percentage:number;
   public suscribe!: Subscription | undefined;
   public task$!: Observable<Task[]>;
-  public listOfTask: Task[] = []
+  public listOfTask: Task[] = [];
 
   constructor(public todoListService: TodolistService) {
     this.count = 0;

@@ -50,7 +50,7 @@ export class TodolistService {
     return percentage;
   }
 
-  getTaskById(taskId:any):Task[] {
+  getTaskById(taskId:number):Task[] {
     return this.listOfTask.filter(task => task.id == taskId)
   }
 
@@ -63,9 +63,8 @@ export class TodolistService {
   }
 
   addTask(task: any): void {
-    let newTask = new Task(task.title, task.completed, task.description);
-    console.log(newTask);
-    console.log(task);
+    let booleanTask = task.completed == "true" ? true : false
+    let newTask = new Task(task.title, booleanTask, task.description);
     this.listOfTask.push(newTask);
     this.emiter(this.listOfTask);
   }

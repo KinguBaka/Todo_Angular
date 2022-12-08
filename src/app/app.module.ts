@@ -13,6 +13,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { TaskdetailsComponent } from './components/taskdetails/taskdetails.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
     LogoutComponent,
     TaskdetailsComponent,
     NotFoundComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
