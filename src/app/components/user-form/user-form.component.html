@@ -1,4 +1,4 @@
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="userForm" >
   <label class="form-label" for="fistName">FirstName : </label>
   <input class="form-control" type="text" formControlName="firstName"> <br>
 
@@ -9,14 +9,20 @@
   <input class="form-control" type="email" formControlName="email"> <br>
 
   <label class="form-label" for="team">Team : </label>
-  <select class="form-select" formControlName="team" aria-label="Default select example">
+  <select class="form-select team" formControlName="team" aria-label="Default select example">
     <option value="Softeam">Softeam</option>
     <option value="La Quarantaine">La Quarantaine</option>
     <option value="Pichtachius">Pichtachius</option>
   </select> <br>
 
-  <!-- <label class="form-label" for="skills">Skills : </label>
-  <input class="form-control" name="skills" type="text" multiple pattern="[^,]+" placeholder="Enter values separated by a ,"> <br> -->
+  <div formArrayName="skills" class="skills">
+    <label class="form-label" *ngFor="let skill of skills.controls; index as i">
+      Skill {{i+1}} :
+      <input class="form-control" type="text" [formControlName]="i">
+    </label>
+  </div>
+  <button class="btn btn-outline-primary" (click)="addSkill()">Add</button>
+  <button class="btn btn-outline-danger" *ngIf="skills.length > 0"  (click)="removeSkill()">Remove</button> <br>
 
-  <button class="btn btn-outline-primary" type="submit" [disabled]="!userForm.valid" >Valider</button>
+  <button class="btn btn-outline-primary" type="submit" [disabled]="!userForm.valid"  (click)="onSubmit()">Valider</button>
 </form>
