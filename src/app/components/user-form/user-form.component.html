@@ -1,0 +1,23 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <label class="form-label" for="fistName">FirstName : </label>
+  <input class="form-control" type="text" formControlName="firstName"> <br>
+
+  <label class="form-label" for="lastName">LastName : </label>
+  <input class="form-control" type="text" formControlName="lastName"> <br>
+
+  <label class="form-label" for="email">Email : </label>
+  <input class="form-control" type="email" name="email"> <br>
+
+  <label class="form-label" for="team">Team : </label>
+  <select class="form-select" formControlName="team" aria-label="Default select example">
+    <option selected>Open this select menu</option>
+    <option value="Softeam">Softeam</option>
+    <option value="La Quarantaine">La Quarantaine</option>
+    <option value="Pichtachius">Pichtachius</option>
+  </select> <br>
+
+  <label class="form-label" for="skills">Skills : </label>
+  <input class="form-control" formControlName="skills" type="text" multiple pattern="[^,]+" placeholder="Enter values separated by a ,"> <br>
+
+  <button class="btn btn-outline-primary" type="submit" >Valider</button>
+</form>

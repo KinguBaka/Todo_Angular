@@ -14,8 +14,7 @@ export class TaskFormComponent {
 
 
   onSubmit(taskForm: NgForm) {
-    this.todolistService.addTask(taskForm.value)
+    this.todolistService.addTask(taskForm.value);
     this.router.navigate(['todolist']);
-
   }
 }
