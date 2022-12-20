@@ -34,6 +34,7 @@ export class TodolistService {
   toogleComplete(index:number) {
     this.listOfTask[index].completed = !this.listOfTask[index].completed;
     this.emiter(this.listOfTask)
+    this.save()
   }
 
   get setCount(): number {
@@ -65,21 +66,23 @@ export class TodolistService {
 
   addTask(task: any): void {
     let booleanTask = task.completed == "true" ? true : false
-    let newTask = new Task(task.title, booleanTask, task.description);
+    let newTask = new Task(task.title, booleanTask, task.description, this.listOfTask.length);
     this.listOfTask.push(newTask);
-    this.emiter(this.listOfTask);
     this.save();
   }
 
   save() {
+    console.log(this.listOfTask);
     this.http.put(url + "/task.json", this.listOfTask).subscribe()
     console.log("API PUT");
   }
 
   load() {
+    console.log("load");
     this.http.get(url + "/task.json")
       .subscribe(data => {
-        this._task.next(Object.assign([], data));
+        console.log(data);
+        this._task.next(Object.assign(this.listOfTask, data));
       })
   }
 }
