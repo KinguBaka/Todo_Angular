@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Task } from '../class/task.model';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 const initialList: Task[] = [
   new Task("Course", true, "Acheter du blanc de Poulet" ),
@@ -19,15 +21,13 @@ export class TodolistService {
   readonly task$ = this._task.asObservable();
   public prom!:Promise<string>;
 
-  constructor() {
+  constructor(private http:HttpClient, private router:Router) {
     this.listOfTask = [];
     this.prom = new Promise<string>((resolve) => {
-      setTimeout(() => {
-        this.listOfTask = initialList;
-        this.emiter(this.listOfTask);
-        resolve('fini')
-      }, 1000)
-    })
+      this.listOfTask = initialList;
+      this.emiter(this.listOfTask);
+      resolve('fini')
+    });
   }
 
   toogleComplete(index:number) {
@@ -69,4 +69,8 @@ export class TodolistService {
     this.emiter(this.listOfTask);
   }
 
+  save() {
+    this.http.put('https://todo-angular-49e17-default-rtdb.europe-west1.firebasedatabase.app' + "/task.json", this.listOfTask).subscribe()
+    console.log("evoi fait");
+  }
 }

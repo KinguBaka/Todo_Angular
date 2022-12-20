@@ -15,4 +15,21 @@ form {
     flex-direction: column;
     width: 50%;
   }
+
+  .error {
+    color: red;
+    margin: 5px;
+  }
+
+  .password-strength-weak {
+    color: red;
+  }
+
+  .password-strength-medium {
+    color: orange;
+  }
+
+  .password-strength-strong {
+    color: green;
+  }
 }

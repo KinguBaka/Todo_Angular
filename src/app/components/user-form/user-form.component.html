@@ -1,12 +1,56 @@
 <form [formGroup]="userForm" >
   <label class="form-label" for="fistName">FirstName : </label>
-  <input class="form-control" type="text" formControlName="firstName"> <br>
+  <input class="form-control" type="text" formControlName="firstName">
+  <div *ngIf="firstName.hasError('minlength')" class="error">
+    The string must be at least 2 characters long.
+  </div>
+  <div *ngIf="firstName.hasError('maxlength')" class="error">
+    The string must not be more than 12 characters long.
+  </div><br>
 
   <label class="form-label" for="lastName">LastName : </label>
-  <input class="form-control" type="text" formControlName="lastName"> <br>
+  <input class="form-control" type="text" formControlName="lastName">
+  <div *ngIf="lastName.hasError('minlength')" class="error">
+    The string must be at least 2 characters long.
+  </div>
+  <div *ngIf="lastName.hasError('maxlength')" class="error">
+    The string must not be more than 12 characters long.
+  </div><br>
 
   <label class="form-label" for="email">Email : </label>
-  <input class="form-control" type="email" formControlName="email"> <br>
+  <input class="form-control" type="email" formControlName="email">
+  <div *ngIf="email.dirty && email.hasError('email') ">
+    <p class="error"> Ce champs doit être un email valide !</p>
+  </div> <br>
+
+  <label class="form-label" for="age">Age : </label>
+  <input class="form-control" type="number" formControlName="age"> <br>
+  <div *ngIf="age.dirty && age.hasError('pattern') ">
+    <p class="error"> L'age doit etre compris entre 18 et 99 ans !  </p>
+  </div>
+
+  <label class="form-label" for="username">Username : </label>
+  <input class="form-control" type="text" formControlName="username">
+  <div *ngIf="username.hasError('usernameTaken')" class="error">
+    This username is already taken.
+  </div> <br>
+
+  <div class="" formGroupName='passwordForm'>
+
+    <label class="form-label" for="password">Password : </label>
+    <input class="form-control" type="password" formControlName="password" (ngModelChange)="checkPasswordStrength()">
+    <div [ngClass]="{
+      'password-strength-weak': passwordStrength === 'weak',
+      'password-strength-medium': passwordStrength === 'medium',
+      'password-strength-strong': passwordStrength === 'strong'
+    }">{{ passwordStrength }}</div> <br>
+
+    <label class="form-label" for="confirm">Confirm Password : </label>
+    <input class="form-control" type="password" formControlName="confirm">
+    <div *ngIf="confirm.dirty && passwordForm.hasError('matchingError')">
+      <p class="error"> Les mots de passe ne sont pas similaire !</p>
+  </div><br>
+  </div>
 
   <label class="form-label" for="team">Team : </label>
   <select class="form-select team" formControlName="team" aria-label="Default select example">

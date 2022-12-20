@@ -2,8 +2,10 @@
 <ul class="cardUser" *ngFor="let user of listOfUser">
     <li class="card">
       <div class="card-body">
-        <p class="card-title">Name : {{ user.firstName }} {{ user.lastName }}</p>
+        <p class="card-title">Name : {{ user.firstName }} {{ user.lastName }} - Username : {{user.username}}</p>
+        <p class="card-text">Age : {{ user.age }} </p>
         <p class="card-text">Email : {{ user.email }} </p>
+        <p class="card-text">password : {{ user.password }} </p>
         <p class="card-text">Team : {{ user.team }} </p>
         <p>skills :</p>
         <ul class="list-group list-group-flush" *ngFor="let skill of user.skills">

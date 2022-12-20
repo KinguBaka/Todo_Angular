@@ -3,9 +3,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../class/user.model';
 
 const initialUser: User[] = [
-  new User("Tarik", "A", "tarik.a@gmail.com", "Softeam", ["JavaScript", "Angular"]),
-  new User("Roi", "Baka", "roi.baka@gmail.com", "Pistachius", ["Flemme", "Encore Flemme"]),
-  new User("Paco", "Shac", "paco.shac@gmail.com", "La Quarantaine", ["Html", "SCSS", "JavaScript"])
+  new User("Tarik", "A", "Tarik A", 27, "azerty01", "tarik.a@gmail.com", "Softeam", ["JavaScript", "Angular"]),
+  new User("Roi", "Baka", "Roi Baka", 27, "azerty01",  "roi.baka@gmail.com", "Pistachius", ["Flemme", "Encore Flemme"]),
+  new User("Paco", "Shac", "Paco'Shac", 27, "azerty01",  "paco.shac@gmail.com", "La Quarantaine", ["Html", "SCSS", "JavaScript"])
 ]
 
 @Injectable({
@@ -34,7 +34,7 @@ export class UserService {
   }
 
   addUser(user: any): void {
-    let newUser = new User(user.firstName, user.lastName, user.email, user.team, user.skills);
+    let newUser = new User(user.firstName, user.lastName, user.username, user.age, user.password, user.email, user.team, user.skills);
     this.listOfUser.push(newUser);
     this.emitUser(this.listOfUser);
   }
@@ -45,5 +45,14 @@ export class UserService {
 
   getUserById(userId:number):User[] {
     return this.listOfUser.filter(user => user.id == userId)
+  }
+
+  checkUsernameUniqueness(str : string): boolean {
+    for (let user of this.listOfUser) {
+      if (user.username === str) {
+        return true;
+      }
+    }
+    return false;
   }
 }
