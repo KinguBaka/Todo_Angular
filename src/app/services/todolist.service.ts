@@ -4,13 +4,13 @@ import { Task } from '../class/task.model';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-const initialList: Task[] = [
-  new Task("Course", true, "Acheter du blanc de Poulet" ),
-  new Task("Chat", false, "Nourrir le chat!" ),
-  new Task("Dormir", false, "Faire une nuit de 10h" )
-]
+// const initialList: Task[] = [
+//   new Task("Course", true, "Acheter du blanc de Poulet" ),
+//   new Task("Chat", false, "Nourrir le chat!" ),
+//   new Task("Dormir", false, "Faire une nuit de 10h" )
+// ]
 
-
+const url = 'https://todo-angular-49e17-default-rtdb.europe-west1.firebasedatabase.app';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +23,13 @@ export class TodolistService {
 
   constructor(private http:HttpClient, private router:Router) {
     this.listOfTask = [];
-    this.prom = new Promise<string>((resolve) => {
-      this.listOfTask = initialList;
-      this.emiter(this.listOfTask);
-      resolve('fini')
-    });
+    // this.prom = new Promise<string>((resolve) => {
+    //   this.listOfTask = initialList;
+    //   this.emiter(this.listOfTask);
+    //   resolve('fini')
+    // });
   }
+
 
   toogleComplete(index:number) {
     this.listOfTask[index].completed = !this.listOfTask[index].completed;
@@ -67,10 +68,18 @@ export class TodolistService {
     let newTask = new Task(task.title, booleanTask, task.description);
     this.listOfTask.push(newTask);
     this.emiter(this.listOfTask);
+    this.save();
   }
 
   save() {
-    this.http.put('https://todo-angular-49e17-default-rtdb.europe-west1.firebasedatabase.app' + "/task.json", this.listOfTask).subscribe()
-    console.log("evoi fait");
+    this.http.put(url + "/task.json", this.listOfTask).subscribe()
+    console.log("API PUT");
+  }
+
+  load() {
+    this.http.get(url + "/task.json")
+      .subscribe(data => {
+        this._task.next(Object.assign([], data));
+      })
   }
 }

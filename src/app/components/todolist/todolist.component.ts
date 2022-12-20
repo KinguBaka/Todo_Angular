@@ -31,9 +31,9 @@ export class TodolistComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit():void {
+    this.todoListService.load();
     this.task$ = this.todoListService.getTask();
     this.getTask();
-    this.todoListService.save();
   }
 
   ngOnDestroy(): void {
