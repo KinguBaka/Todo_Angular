@@ -72,16 +72,12 @@ export class TodolistService {
   }
 
   save() {
-    console.log(this.listOfTask);
     this.http.put(url + "/task.json", this.listOfTask).subscribe()
-    console.log("API PUT");
   }
 
   load() {
-    console.log("load");
     this.http.get(url + "/task.json")
       .subscribe(data => {
-        console.log(data);
         this._task.next(Object.assign(this.listOfTask, data));
       })
   }
