@@ -23,7 +23,6 @@ const routes: Routes = [
       {path: 'user-form', component: UserFormComponent },
     ]
   },
-  {path: 'card', component: CardComponent},
   {path: 'login', component: LoginComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '404'}
