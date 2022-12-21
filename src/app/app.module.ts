@@ -16,7 +16,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
-import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +29,7 @@ import { CardComponent } from './components/card/card.component';
     NotFoundComponent,
     TaskFormComponent,
     UserListComponent,
-    UserFormComponent,
-    CardComponent
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
