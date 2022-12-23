@@ -37,7 +37,7 @@ export class UserFormComponent {
     this.firstName = this.fb.control('', {validators:[Validators.required, Validators.minLength(2), Validators.maxLength(12)], updateOn: 'blur'});
     this.lastName = this.fb.control('', {validators:[Validators.required, Validators.minLength(2), Validators.maxLength(12)], updateOn: 'blur'});
     this.email = this.fb.control('', [Validators.required, Validators.email]);
-    this.age = this.fb.control('', {validators:[Validators.required, Validators.pattern(/^(1[8-9]|[7-9][0-9])$/)], updateOn: 'blur'});
+    this.age = this.fb.control('', {validators:[Validators.required, Validators.pattern(/^(1[8-9]|[2-9][0-9])$/)], updateOn: 'blur'});
     this.username = this.fb.control('', [Validators.required, this.checkUsernameUniqueness.bind(this)]);
     this.password = this.fb.control('', [Validators.required]);
     this.confirm = this.fb.control('', [Validators.required]);
@@ -62,6 +62,10 @@ export class UserFormComponent {
       skills : this.skills
 
     });
+  }
+
+  ngOnInit():void{
+    this.userService.load();
   }
 
   addSkill() {

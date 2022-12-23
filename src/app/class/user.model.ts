@@ -1,7 +1,4 @@
 export class User {
-  of(arg0: (user: any) => boolean): any {
-    throw new Error('Method not implemented.');
-  }
 
   id:number;
   firstName: string;
@@ -12,10 +9,10 @@ export class User {
   email: string;
   team: string;
   skills: string[];
-  private static index: number = 0
 
-  constructor(firstName:string, lastName:string,username: string, age: number, password: string, email: string, team:string, skills: string[]) {
-    this.id = User.index++;
+
+  constructor(firstName:string, lastName:string,username: string, age: number, password: string, email: string, team:string, skills: string[], id:number) {
+    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.username = username;
@@ -24,6 +21,5 @@ export class User {
     this.email = email;
     this.team = team;
     this.skills = skills;
-
   }
 }

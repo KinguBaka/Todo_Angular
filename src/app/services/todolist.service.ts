@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Task } from '../class/task.model';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 // const initialList: Task[] = [
 //   new Task("Course", true, "Acheter du blanc de Poulet" ),
@@ -19,9 +18,9 @@ export class TodolistService {
   private listOfTask: Task[];
   private _task = new BehaviorSubject<Task[]>([]);
   readonly task$ = this._task.asObservable();
-  public prom!:Promise<string>;
+  // public prom!:Promise<string>;
 
-  constructor(private http:HttpClient, private router:Router) {
+  constructor(private http:HttpClient) {
     this.listOfTask = [];
     // this.prom = new Promise<string>((resolve) => {
     //   this.listOfTask = initialList;
@@ -66,7 +65,7 @@ export class TodolistService {
 
   addTask(task: any): void {
     let booleanTask = task.completed == "true" ? true : false
-    let newTask = new Task(task.title, booleanTask, task.description, this.listOfTask.length);
+    let newTask = new Task(task.title, booleanTask, task.description, this.checkId(this.listOfTask));
     this.listOfTask.push(newTask);
     this.save();
   }
@@ -80,5 +79,9 @@ export class TodolistService {
       .subscribe(data => {
         this._task.next(Object.assign(this.listOfTask, data));
       })
+  }
+
+  checkId(array: Array<any>):number {
+    return (Math.max(...array.map(task => task.id)))+ 1;
   }
 }
